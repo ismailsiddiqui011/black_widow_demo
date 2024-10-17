@@ -1,13 +1,13 @@
-FROM ubuntu/python:3.12-24.04_stable
+FROM python:3.12-slim
 
 # RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
 
 COPY requirements.txt /tmp/
-RUN pip3 install --upgrade pip && \
-    pip3 install -r /tmp/requirements.txt
+RUN python3 -m pip install --upgrade pip && \
+python3 -m pip install -r /tmp/requirements.txt
 
 COPY . .
 
 EXPOSE 1411
 
-CMD ["python", "main.py"]
+CMD ["python3", "main.py"]
